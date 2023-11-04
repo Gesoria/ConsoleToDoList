@@ -41,6 +41,7 @@ namespace ConsoleToDoList
         }
         static void Main(string[] args)
         {
+            Console.WriteLine("This is new prekillllll");
             Console.WriteLine("Добро пожаловать в ваш список дел!");
             Console.WriteLine("Введите имя пользователя");
             string name = Console.ReadLine();
