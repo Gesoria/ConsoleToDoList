@@ -20,60 +20,20 @@ namespace ToDoListDesktopApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ToDoList myTaskList;
         public MainWindow()
         {
+            myTaskList = new("Pirozho4ek");
             InitializeComponent();
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+       
+        private void ButtonCreateTask_Click(object sender, RoutedEventArgs e)
         {
-
-            string name = ZalupkaMedvezhonka.Text;
-            string? desc = TextBoxDescription.Text;
-
-            DateTime? deadline = PickTaskDeadline.SelectedDate;
-            
-
-            int priority = 0;
-            if (Priority1.IsChecked == true)
-            {
-                priority = 1;
-            }
-            else if (Priority2.IsChecked == true)
-            {
-                priority = 2;
-            }
-            else if (Priority3.IsChecked == true)
-            {
-                priority = 3;
-            }
-
-           
-            Task taso4ka = new Task(name, desc, deadline.GetValueOrDefault(), 1, priority);
-
-
-            ZalupkaMedvezhonka.Clear();
-            TextBoxDescription.Clear();
-            PickTaskDeadline.SelectedDate = DateTime.Now;
-            Priority1.IsChecked = false;
-            Priority2.IsChecked = false;
-            Priority3.IsChecked = false;
-
-            MessageBox.Show("Задача успешно добавлена!");
-
-
-
-
-            List<Task> tasks = new List<Task>();//в нём 100 элементов
-
-            Task? neededTask = tasks.Find(t => t.Name == "Оторвать лапку медвежонку)");
-
-            PrintTaskInfo(neededTask);
+            AddTaskWindow taskWindow = new AddTaskWindow(myTaskList, this);
+            taskWindow.Show();
+            this.Hide();
         }
 
-        private void PrintTaskInfo(Task task)
-        {
-            Console.WriteLine(task.Name);
-        }
     }
 }

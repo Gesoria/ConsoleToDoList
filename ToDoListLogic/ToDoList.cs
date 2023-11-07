@@ -23,6 +23,12 @@
             Tasks.Add(newtask);
         }
         
+        public void AddTask(Task task)
+        {
+            TaskId++;
+            Tasks.Add(task);
+        }
+
         public void PrintAlltasks()
         {
             if (Tasks.Count == 0)
