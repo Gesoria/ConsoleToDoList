@@ -7,7 +7,45 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="ButtonCreateTask" Content="Добавить новую задачу" HorizontalAlignment="Left" Margin="318,314,0,0" VerticalAlignment="Top" Click="ButtonCreateTask_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="112*"/>
+            <ColumnDefinition Width="158*"/>
+            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition Width="88*"/>
+            <ColumnDefinition Width="135*"/>
+            <ColumnDefinition Width="135*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="76*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <!-- Заголовок -->
+        <!--<Label Content="Список задач" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,121,0,0" Grid.Row="2" Grid.RowSpan="2" Height="26" Width="84" Grid.Column="1"/>-->
+        <DataGrid  ItemsSource="{Binding Tasks}" x:Name="dataGrid" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="4" AutoGenerateColumns="True" Height="auto" Width="auto" SelectionChanged="dataGrid_SelectionChanged" Margin="0,50,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="auto" />
+                <DataGridTextColumn Header="Дата выполнения" Binding="{Binding Deadline}" Width="auto" />
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="auto" />
+                <DataGridTextColumn Header="Приоритет" Binding="{Binding Priority}" Width="auto"/>
+                <DataGridCheckBoxColumn Header="Выполнено" Binding="{Binding IsCompleted}" Width="auto"/>
+            </DataGrid.Columns>
+
+
+            <!--<StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Previous" Click="btnPrevious_Click"/>
+                <Button Content="Next" Click="btnNext_Click" Margin="10,0,0,0"/>
+            </StackPanel>-->
+        </DataGrid>
     </Grid>
 </Window>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToDoListLogic
 {
-    public class Task
+    public class ToDoTask
     {
         public  string Name { get; set; }
         public string Description { get; set; }
@@ -18,7 +18,7 @@ namespace ToDoListLogic
 
         private const int MaxPriority = 3;
 
-        public Task(string name, string description, DateTime deadline, int taskID, int priority = 0) 
+        public ToDoTask(string name, string description, DateTime deadline, int taskID, int priority = 0) 
         {
             Name = name;
             Description = description;

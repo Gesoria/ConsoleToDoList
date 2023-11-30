@@ -55,7 +55,7 @@ namespace ToDoListDesktopApp
             }
 
 
-            Task taso4ka = new Task(name, desc, deadline.GetValueOrDefault(), 1, priority);
+            ToDoTask taso4ka = new ToDoTask(name, desc, deadline.GetValueOrDefault(), 1, priority);
 
 
             TextBoxName.Clear();
