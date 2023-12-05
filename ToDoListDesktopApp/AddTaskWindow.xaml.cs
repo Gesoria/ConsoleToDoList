@@ -68,6 +68,7 @@ namespace ToDoListDesktopApp
             MessageBox.Show("Задача успешно добавлена!");
             _myTaskList.AddTask(taso4ka);
             _mainWindow.Show();
+            _mainWindow.dataGrid.ItemsSource = _myTaskList.Tasks;
             this.Close();
 
         }

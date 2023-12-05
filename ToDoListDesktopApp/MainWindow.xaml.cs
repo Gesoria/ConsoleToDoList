@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoListDesktopApp.ViewModels;
 using ToDoListLogic;
 
 namespace ToDoListDesktopApp
@@ -25,19 +26,22 @@ namespace ToDoListDesktopApp
         {
             myTaskList = new("Pirozho4ek");
             InitializeComponent();
+         
+
+            dataGrid.ItemsSource = myTaskList.Tasks;
         }
 
-       
-        private void ButtonCreateTask_Click(object sender, RoutedEventArgs e)
-        {
-            AddTaskWindow taskWindow = new AddTaskWindow(myTaskList, this);
-            taskWindow.Show();
-            this.Hide();
-        }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void ButtonAddTask_Click(object sender, RoutedEventArgs e)
+        {
+            AddTaskWindow taskWindow = new AddTaskWindow(myTaskList, this);
+            taskWindow.Show();
+            this.Hide();
         }
     }
 }
