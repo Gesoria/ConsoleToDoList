@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,16 +24,25 @@ namespace ToDoListDesktopApp
     public partial class MainWindow : Window
     {
         public ToDoList myTaskList;
+
+        public ObservableCollection<ToDoTask> tasksToDo;
         public MainWindow()
         {
             myTaskList = new("Pirozho4ek");
             InitializeComponent();
-         
 
-            dataGrid.ItemsSource = myTaskList.Tasks;
+
+            dataGrid.ItemsSource = tasksToDo;
         }
 
-
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox && checkBox.DataContext is ToDoTask task)
+            {
+                // Удалите задачу из исходной коллекции (поменяйте это на свою логику)
+                (dataGrid.ItemsSource as ObservableCollection<ToDoTask>)?.Remove(task);
+            }
+        }
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

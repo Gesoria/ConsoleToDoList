@@ -28,7 +28,22 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <DataGrid x:Name="dataGrid" AutoGenerateColumns="True" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="3">
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="3">
+
+            <DataGrid.Columns>
+                <!-- Другие колонки -->
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="20*"/>
+                <DataGridTextColumn Header="Дата выполнения" Binding="{Binding Deadline }" Width="20*"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="20*"/>
+                <DataGridTextColumn Header="Приоритет" Binding="{Binding Priority}" Width="20*"/>
+                <DataGridCheckBoxColumn Header="Отметка о выполнении" Binding="{Binding IsCompleted}" Width="20*">
+                    <DataGridCheckBoxColumn.ElementStyle>
+                        <Style TargetType="CheckBox">
+                            <EventSetter Event="Checked" Handler="CheckBox_Checked"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.ElementStyle>
+                </DataGridCheckBoxColumn>
+            </DataGrid.Columns>
             <!-- Определите столбцы, если AutoGenerateColumns="True" не подходит -->
         </DataGrid>
         <Button x:Name="ButtonAddTask" Grid.Column="5" Content="Button" Width="100" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Click="ButtonAddTask_Click"/>
