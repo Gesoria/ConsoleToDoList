@@ -1,4 +1,6 @@
 ﻿using ToDoListLogic;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace ConsoleToDoList
 {
@@ -39,6 +41,14 @@ namespace ConsoleToDoList
             int changeID = int.Parse(Console.ReadLine());
             current.DeleteTask(changeID);
         }
+        static void SaveAccount(ToDoList current)
+        {
+            StreamWriter sw = new StreamWriter($"../{current.UserName}.txt", false);
+            string convertedAccountList = JsonConvert.SerializeObject(current);
+            sw.Write(convertedAccountList);
+            sw.Close();
+
+        }
         static void Main(string[] args)
         {            
             Console.WriteLine("Добро пожаловать в ваш список дел!");
@@ -75,6 +85,7 @@ namespace ConsoleToDoList
                         break;
                     case 5:
                         {
+                            SaveAccount(newlist);
                             return;
                         }
                     default:
