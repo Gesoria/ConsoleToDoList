@@ -49,12 +49,25 @@ namespace ConsoleToDoList
             sw.Close();
 
         }
+
+        static void TryToLoadAccountData(ToDoList current)
+        {
+            if (File.Exists($"../{current.UserName}.txt"))
+            {
+                StreamReader sr = new StreamReader($"../{current.UserName}.txt");
+                string data = sr.ReadToEnd();
+                current = JsonConvert.DeserializeObject<ToDoList>(data);
+                Console.WriteLine("Данные загружены!");
+            }
+        }
         static void Main(string[] args)
         {            
             Console.WriteLine("Добро пожаловать в ваш список дел!");
             Console.WriteLine("Введите имя пользователя");
             string name = Console.ReadLine();
             ToDoList newlist = new ToDoList(name);
+            TryToLoadAccountData(newlist);
+
             int action = -1;
             while (action != 5)
             {
